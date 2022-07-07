@@ -1,0 +1,29 @@
+@import '/src/styles/variable';
+
+.menu {
+    background: #FFF;
+    border-radius: 6px;
+    padding: 4px 9px 4px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.menu_item {
+    padding: 16px 19px 13px 19px;
+    cursor: pointer;
+    transition: .2s background;
+    &:hover {
+        background: rgba(3, 116, 255, 0.15);
+        border-radius: 3px;
+    };
+    & * {
+        fill: #0374FF;
+    }
+}
+.active_icon {
+    background: rgba(3, 116, 255, 0.15);
+    border-radius: 3px;
+    & * {
+        fill: #0374FF;
+    }
+}

@@ -1,0 +1,26 @@
+@import '../styles/variable';
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    width: 300px;
+    height: 100vh;
+    padding: 11px 15px 11px 11px;
+}
+.create_notebook {
+    display: flex;
+    align-items: center;
+    &:hover {
+        border-bottom: 2px solid $textActiveColor;
+        cursor: pointer;
+    }
+    border-bottom: 2px solid transparent;
+    width: fit-content;
+}
+.create_notebook_txt {
+    margin-left: 13px;
+    color: $textActiveColor;
+    border-bottom: 2px solid #FFF;
+    font-weight: 600;
+}

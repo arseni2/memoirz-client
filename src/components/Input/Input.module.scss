@@ -1,0 +1,18 @@
+@import '../../styles/variable';
+
+.input {
+    outline: none;
+    border: 1px solid #C8C8C8;
+    width: 300px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    padding: 2px;
+    transition: .2s border-color, box-shadow .3s;
+    margin: 30px;
+    &:focus {
+        border-color: $textActiveColor;
+        box-shadow: 0 0 0 3px rgb(3 116 255 / 25%);
+    }
+}
