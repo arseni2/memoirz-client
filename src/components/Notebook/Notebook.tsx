@@ -29,7 +29,6 @@ const Notebook = (props: propsType) => {
             title
             // @ts-ignore
         })).then((data: FulfilledAction) => {
-            console.log(data)
             navigate(`${data.payload.id}`)
             setCreateNote(false)
         })

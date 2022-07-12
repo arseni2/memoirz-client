@@ -13,6 +13,7 @@ type initialStateType = {
     notebooks: Array<notebookType>
     loading: boolean
     currentNote: null | noteType
+    menuLoading: boolean
 }
 export const getAllNotebooksThunk = createAsyncThunk(
     'getAllNotebooksThunk',
@@ -49,7 +50,8 @@ export const updateNoteThunk = createAsyncThunk(
 const initialState: initialStateType = {
     notebooks: [],
     loading: true,
-    currentNote: null
+    currentNote: null,
+    menuLoading: true
 }
 const notebookSlice = createSlice({
     name: 'notebook',
@@ -58,25 +60,20 @@ const notebookSlice = createSlice({
     extraReducers: {
         [getAllNotebooksThunk.fulfilled.type]: (state, action: PayloadAction<Array<notebookType>>) => {
             state.notebooks = action.payload
-            state.loading = false
+            state.menuLoading = false
         },
         [createNotebookThunk.fulfilled.type]: (state, action: PayloadAction<notebookType>) => {
-            // @ts-ignore
             state.notebooks.push(action.payload)
         },
         [createNoteThunk.fulfilled.type]: (state, action: PayloadAction<noteType>) => {
             if (state.notebooks.length === 1) {
-                // @ts-ignore
                 state.notebooks[0].notes.push(action.payload)
             } else {
                 let notebook = state.notebooks.find((item) => item.id === action.payload.notebook)
-                // @ts-ignore
-                let index = state.notebooks.indexOf(notebook)
-                // @ts-ignore
-                state.notebooks.fill(notebook.notes.push(action.payload), index, index++);
+                let index = state.notebooks.indexOf(notebook as notebookType)
+                notebook?.notes.push(action.payload)
+                state.notebooks.fill(notebook as notebookType, index, index++);
             }
-
-            //mb write better create note logic
         },
         [getNoteDetailThunk.fulfilled.type]: (state, action: PayloadAction<noteType>) => {
             state.currentNote = action.payload

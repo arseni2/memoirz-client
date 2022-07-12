@@ -9,7 +9,7 @@ function App() {
             <Menu/>
             <Routes>
                 <Route path="/:noteId" element={
-                    <EditorContainer />
+                    <EditorContainer/>
                 }/>
             </Routes>
         </>
